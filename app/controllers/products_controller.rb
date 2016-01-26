@@ -1,6 +1,14 @@
 class ProductsController < ApplicationController
     def index
-        @products = Product.all
+        if params[:order]
+            @products = Product.order("price ASC")  
+        else
+            @products = Product.all
+        end
+
+        if params[:discount]
+            
+        end
     end
 
     def show
@@ -15,6 +23,10 @@ class ProductsController < ApplicationController
                                 price: params[:price],
                                 image: params[:image],
                                 description: params[:description]})
+
+    flash[:success] = "New Product Created"
+
+    redirect_to "/"    
 
     end
 
@@ -31,11 +43,18 @@ class ProductsController < ApplicationController
                        image: params[:image],
                        description: params[:description]})
 
+        flash[:success] = "Product Updated"
+        redirect_to "/products/#{@product.id}"
+
     end
 
     def destroy
         @product = Product.find(params[:id])
         @product.destroy
+
+        flash[:warning] = "Product destroyed"
+
+        redirect_to "/"
     end
 
 end

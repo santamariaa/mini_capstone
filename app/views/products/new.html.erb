@@ -1,4 +1,4 @@
-<h1> Add a new recipe</h1>
+<h1> Add a new Product</h1>
 
 <%= form_tag '/products', method: :post do %>
     
@@ -13,8 +13,8 @@
     </div>
 
     <div>
-    <%=label_tag :directions %>
-    <%=text_field_tag :directions %>
+    <%=label_tag :description %>
+    <%=text_field_tag :description %>
     </div>
 
     <%= submit_tag "Punch It" %>

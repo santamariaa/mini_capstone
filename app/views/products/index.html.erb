@@ -6,12 +6,15 @@
 <p>Description</p>
 
 <h1> Products </h1>
-<% @products.each do |product| %>
-    <h2><a href= "/products/<%= product.id %>"><%= product.name %></a></h2>
-    <h3><%= product.price %></h3>
-    <h3><img src="<%= product.image%>" height="100px" width="100px"></h3>
-    <h3><%= product.description %></h3>
+<div class="row">
 
-    <h5> <a data-confirm="Are you sure?" data-method="delete"href="/products/<%=product.id%>" rel="nofollow">Delete</a> </h5>
+    <% @products.each do |product| %>
+        <h2><a href= "/products/<%= product.id %>"><%= product.name %></a></h2>
+        <h3><%= product.price %></h3>
+        <h3><img src="<%= product.image%>" height="100px" width="100px"></h3>
+        <h3><%= product.description %></h3>
 
-<% end %>
+        <h5> <a data-confirm="Are you sure?" data-method="delete"href="/products/<%=product.id%>" rel="nofollow">Delete</a> </h5>
+    <% end %>
+
+</div>
