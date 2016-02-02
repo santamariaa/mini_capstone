@@ -1,12 +1,13 @@
-<h1> Order Page </h1>
+<h1> Your order is <%=@order.id %> </h1>
+
 <p> Quatinty: <%= @order.quantity %> </p>
 <p> User id: <%= @order.user_id %> </p>
 
-<p> Product name: <%= @product.name %> </p>
+<p> Product name: <%= @order.product.name %> </p>
 
-<p> Product price: <%= @product.price %> </p>
-<p> Product tax: <%= @product.tax %> </p>
-<p> Product Total: <%= @product.total %> </p>
-<p> Product Email: <%= @user.email %> </p>
-<p> Product Image: <img src=<%=@product.images%>> </p>
-<p> Purchased time: <%= @order.created_at %> </p>
+<p> Product price: <%= number_to_currency(@order.product.price) %> </p>
+<p> Product tax: <%= number_to_currency(@order.product.tax) %> </p>
+<p> Product Total: <%= number_to_currency(@order.product.total) %> </p>
+<p> Product Email: <%= @order.user.email %> </p>
+<p> Product Image: <img src=<%=@order.product.images[0].image_url %>> </p>
+<p> Purchased time: <%= @order.friendly_time %> </p>

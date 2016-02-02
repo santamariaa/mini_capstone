@@ -1,9 +1,22 @@
 class Order < ActiveRecord::Base
-    belongs_to :product
-    belongs_to :user
 
-    # def friendly_date
-    #     <%= %m-%e-%y %H:%M %>
-    # end
+    has_many :carted_products
+    has_many :products, through: :carted_products
+
+    def friendly_time
+        created_at.strftime("%b %e, %l:%M %p")
+    end
+
+    def calc_subtotal(price)
+        price * quantity
+    end
+
+    def calc_tax(tax_rate)
+        subtotal * tax_rate
+    end
+
+    def calc_total
+        subtotal + tax
+    end
     #devise
 end

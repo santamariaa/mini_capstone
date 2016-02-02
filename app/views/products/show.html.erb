@@ -1,14 +1,18 @@
 <h1><%= @product.name %></h1>
-<h2>Price: <%= @product.price %></h2>
+<h2>Price: <%= number_to_currency(@product.price) %></h2>
 <h2><%= @product.sale_message %> </h2>
-<h2>Tax: <%= @product.tax %> </h2>
-<h2>Total: <%= @product.total %> </h2>
+<h2>Tax: <%= number_to_currency(@product.tax) %> </h2>
+<h2>Total: <%= number_to_currency(@product.total) %> </h2>
 <h2> Supplier: <%= @product.supplier.name %> </h2>
 
-<h2><img src="<%= @product.images%>" height="100px" width="100px"></h2>
+<h1>Category<% @product.categories.each do |category| %></h1><%= category.name %>
+
+<% end %>
+
+<h2><img src="<%= @product.images[0].image_url %>" height="100px" width="100px"></h2>
 <h2><%= @product.description %></h2>
 
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag '/cart', method: :post do %>
     
     <div>
     <%=label_tag :quantity %>
@@ -16,8 +20,8 @@
     </div>
 
      <div>
-    <%=label_tag :product_id %>
-    <%= text_field_tag :product_id, @product.id%>
+
+    <%= hidden_field_tag :product_id, @product.id%>
     </div>
 
      <%= submit_tag "Buy Now" %>
