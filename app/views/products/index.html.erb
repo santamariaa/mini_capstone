@@ -9,6 +9,7 @@
 <div class="row">
 
     <% @products.each do |product| %>
+      <div class="col-md-4"> 
         <h2><a href= "/products/<%= product.id %>"><%= product.name %></a></h2>
         <h3><%= product.price %></h3>
         <p> Images: </p>
@@ -21,6 +22,7 @@
         <h3><%= product.description %></h3>
 
         <h5> <a data-confirm="Are you sure?" data-method="delete"href="/products/<%=product.id%>" rel="nofollow">Delete</a> </h5>
+      </div>    
     <% end %>
 
 </div>
