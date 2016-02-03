@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
     root "products#index"
+    
     get '/' => 'products#index'
 
     get '/products' => 'products#index'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     post '/orders' => 'orders#create'
     get '/orders/:id' => 'orders#show'
 
-    post '/cart' => 'carted_product#create'
+    get '/carted_products' => 'carted_products#index'
+    post '/carted_products' => 'carted_products#create'
 
 end

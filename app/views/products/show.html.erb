@@ -13,7 +13,7 @@
 <h2><img src="<%= @product.images[0].image_url %>" height="100px" width="100px"></h2>
 <h2><%= @product.description %></h2>
 
-<%= form_tag '/cart', method: :post do %>
+<%= form_tag '/carted_products', method: :post do %>
     
     <div>
     <%=label_tag :quantity %>
@@ -25,7 +25,7 @@
     <%= hidden_field_tag :product_id, @product.id%>
     </div>
 
-     <%= submit_tag "Buy Now" %>
+     <%= submit_tag "Add to Cart" %>
 <% end %>
 
 <%= link_to "Home", "/" %>

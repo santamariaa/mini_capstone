@@ -1,0 +1,15 @@
+<h1> Your Cart </h1>
+
+<%= @carted_products.each do |cart| %>
+    <p>Product: <%= cart.product.name %></p>
+    <p>Price: <%= cart.product.price %></p>
+    <p>Status: <%= cart.status%></p>
+    <p>Email: <%= cart.user.email%></p>
+  
+    <%= form_tag "/orders", method: :post do %>
+
+    <%= submit_tag "Buy Now", class: "btn btn-success" %>
+    <% end %>
+
+<% end %>
+

@@ -5,12 +5,12 @@ class CartedProductsController < ApplicationController
                                             quantity: params[:quantity],
                                             status: "carted" }) 
 
-    redirect_to ""
+    redirect_to "/carted_products"
     end
 
     def index
         if current_user 
-        @carted_products = CartedProducts.all
+            @carted_products = CartedProduct.where(user_id: current_user.id)
         end
     end
 end

@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
             @products = Product.all
         end
 
-        if params[:discount]
+        if params[:discount]    
             
         end
 
